@@ -36,6 +36,33 @@ Package.onUse(function(api) {
     'momentjs:moment@2.15.1', 'reywood:publish-composite@1.4.2',
     'aldeed:template-extension@4.0.0', 'barbatus:stars-rating@1.1.1'
   ]);
+
+  // Package specific globals and files
+  api.addFiles([
+    'lib/collections/comments.js',
+    'lib/collections/methods/comments.js'
+  ]);
+
+  api.addFiles([
+    'lib/exports/media-analyzers/image.js',
+    'lib/exports/media-analyzers/youtube.js',
+    'lib/exports/user.js',
+    'lib/exports/time-tick.js',
+    'lib/exports/media.js',
+    'lib/templates/commentsBox/commentsBox.html',
+    'lib/api.js'
+  ]);
+
+  api.addFiles([
+    'lib/templates/helpers.js',
+    'lib/templates/commentsBox/commentsBox.js'
+  ], 'client');
+
+  api.addFiles([
+    'lib/server/publish.js',
+    'lib/exports/hash.js'
+  ], 'server');
+
   api.mainModule('j-comments.js');
 });
 
@@ -43,5 +70,6 @@ Package.onTest(function(api) {
   api.use('ecmascript');
   api.use(['tinytest', 'accounts-password', 'audit-argument-checks', 'check']);
   api.use('ginsama:j-comments');
-  api.mainModule('j-comments-tests.js');
+
+  api.mainModule('jcomments-tests.js');
 });

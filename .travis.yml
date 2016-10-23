@@ -1,8 +1,7 @@
 language: node_js
 node_js:
-  - "node"
+  - "0.12"
 before_install:
-  - "curl -L http://git.io/v3ort | /bin/sh"
-branches:
-  only:
-    - master
+  - "curl -L https://raw.githubusercontent.com/arunoda/travis-ci-meteor-packages/master/configure.sh | /bin/sh"
+before_script:
+  - "export PATH=$HOME/.meteor:$PATH"

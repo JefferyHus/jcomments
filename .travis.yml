@@ -1,19 +1,8 @@
-sudo: false
-
 language: node_js
-
+node_js:
+  - "node"
 before_install:
-  - curl https://install.meteor.com | /bin/sh
-  - export PATH="$HOME/.meteor:$PATH"
-
-before_script:
-  - meteor npm update
-
-cache:
-  directories:
-    - node_modules
-
-script:
-  - meteor npm run gulp
-  - meteor test --once --driver-package ginsama:jcomments
-  - meteor build $HOME/build.tgz
+  - "curl -L http://git.io/v3ort | /bin/sh"
+branches:
+  only:
+    - master

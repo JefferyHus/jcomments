@@ -71,5 +71,6 @@ Package.onTest(function(api) {
   api.use(['tinytest', 'accounts-password', 'audit-argument-checks', 'check']);
   api.use('ginsama:j-comments');
 
-  api.mainModule('jcomments-tests.js');
+  api.addFiles('tests/api-tests.js');
+  api.addFiles('tests/ui-tests.js', 'client');
 });

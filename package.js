@@ -1,10 +1,10 @@
 Package.describe({
-  name: 'ginsama:j-comments',
+  name: 'ginsama:jcomments',
   version: '0.0.1',
   // Brief, one-line summary of the package.
   summary: 'An easy package for comments functionality',
   // URL to the Git repository containing the source code for this package.
-  git: 'https://github.com/JefferyHus/jcomments',
+  git: 'https://github.com/JefferyHus/meteor-jcomments',
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
@@ -69,8 +69,7 @@ Package.onUse(function(api) {
 Package.onTest(function(api) {
   api.use('ecmascript');
   api.use(['tinytest', 'accounts-password', 'audit-argument-checks', 'check']);
-  api.use('ginsama:j-comments');
+  api.use('ginsama:jcomments');
 
-  api.addFiles('tests/api-tests.js');
-  api.addFiles('tests/ui-tests.js', 'client');
+  api.addFiles('tests.js', 'server');
 });

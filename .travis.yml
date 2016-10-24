@@ -16,3 +16,4 @@ before_install:
   # to remove your travis cache to get meteor updates
   - PATH=$PATH:$HOME/.meteor
   - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
+  - meteor npm install --save bcrypt

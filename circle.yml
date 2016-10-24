@@ -6,9 +6,10 @@ dependencies:
     - "~/.meteor"
     - "~/.npm"
   override:
-    - npm -g install npm@latest-2
+    - npm -g install npm@latest
     # -- CACHE METEOR --
     # Restore the meteor symlink
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     # Install Meteor (if not restored from cache)
     - if [ ! -e ~/.meteor/meteor ]; then curl https://install.meteor.com | /bin/sh; fi
+    - meteor npm install --save bcrypt

@@ -68,6 +68,7 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('ecmascript');
+  api.use('practicalmeteor:mocha');
   api.use(['tinytest', 'accounts-password', 'audit-argument-checks', 'check']);
   api.use('ginsama:jcomments');
 

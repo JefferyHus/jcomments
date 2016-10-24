@@ -15,7 +15,7 @@
   },
   "scripts": {
   	"preinstall": "npm i -g node-gyp && node-gyp clean",
-    "test": "meteor test --driver-package=practicalmeteor:mocha"
+    "test": "meteor test-packages --driver-package practicalmeteor:mocha ./"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 0.10.43
+    version: 4.0
 dependencies:
   cache_directories:
     - "~/.meteor"
@@ -12,4 +12,4 @@ dependencies:
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     # Install Meteor (if not restored from cache)
     - if [ ! -e ~/.meteor/meteor ]; then curl https://install.meteor.com | /bin/sh; fi
-    - meteor npm install --save bcrypt
+    - meteor npm install bcrypt

@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "0.10"
+  - "4.0"
 
 cache:
   directories:
@@ -16,4 +16,14 @@ before_install:
   # to remove your travis cache to get meteor updates
   - PATH=$PATH:$HOME/.meteor
   - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
-  - meteor npm install --save bcrypt
+  - meteor npm install bcrypt
+
+sudo: false
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8

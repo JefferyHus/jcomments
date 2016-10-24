@@ -12,4 +12,3 @@ dependencies:
     - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
     # Install Meteor (if not restored from cache)
     - if [ ! -e ~/.meteor/meteor ]; then curl https://install.meteor.com | /bin/sh; fi
-    - npm install

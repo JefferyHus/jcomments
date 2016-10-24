@@ -53,12 +53,12 @@ Package.onUse(function(api) {
     'lib/api.js'
   ]);
 
-  api.mainModule([
+  api.addFiles([
     'lib/templates/helpers.js',
     'lib/templates/commentsBox/commentsBox.js'
   ], 'client');
 
-  api.mainModule([
+  api.addFiles([
     'lib/server/publish.js',
     'lib/exports/hash.js'
   ], 'server');

@@ -3,7 +3,16 @@ language: node_js
 node_js:
   - "0.10"
 
+cache:
+  directories:
+    - $HOME/.meteor
+    - $HOME/.npm
+
+before_cache:
+  - rm -f $HOME/.meteor/log/*.log
+
 before_install:
   # Download Meteor - Keep in mind that you need
   # to remove your travis cache to get meteor updates
-  - curl -L http://git.io/ejPSng | /bin/sh
+  - PATH=$PATH:$HOME/.meteor
+  - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi

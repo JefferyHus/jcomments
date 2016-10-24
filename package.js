@@ -53,12 +53,12 @@ Package.onUse(function(api) {
     'lib/api.js'
   ]);
 
-  api.addFiles([
+  api.mainModule([
     'lib/templates/helpers.js',
     'lib/templates/commentsBox/commentsBox.js'
   ], 'client');
 
-  api.addFiles([
+  api.mainModule([
     'lib/server/publish.js',
     'lib/exports/hash.js'
   ], 'server');
@@ -71,5 +71,5 @@ Package.onTest(function(api) {
   api.use(['tinytest', 'accounts-password', 'audit-argument-checks', 'check']);
   api.use('ginsama:jcomments');
 
-  api.addFiles('tests.js', 'server');
+  api.mainModule('tests.js', 'server');
 });

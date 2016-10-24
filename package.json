@@ -3,11 +3,19 @@
   "version": "0.0.1",
   "description": "An easy package for comments functionality",
   "main": "lib/api.js",
+  "dependencies": {
+  	"bcrypt":"*"
+  },
   "devDependencies": {
-    "tinytest": "^0.0.2"
+    "tinytest": "^0.0.2",
+    "mocha": "1.7.0"
+  },
+  "env": {
+  	"PYTHON": "/opt/local/bin/python2.7"
   },
   "scripts": {
-    "test": "meteor test-packages ./ --driver-package tinytest"
+  	"preinstall": "npm i -g node-gyp && node-gyp clean",
+    "test": "meteor test --driver-package=practicalmeteor:mocha"
   },
   "repository": {
     "type": "git",

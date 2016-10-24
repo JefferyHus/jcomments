@@ -12,13 +12,14 @@ before_cache:
   - rm -f $HOME/.meteor/log/*.log
 
 before_install:
+  - apt-get install build-essential
   # Download Meteor - Keep in mind that you need
   # to remove your travis cache to get meteor updates
   - PATH=$PATH:$HOME/.meteor
   - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
-  - meteor npm install bcrypt
+  - meteor npm install bcrypt --save
 
-sudo: false
+sudo: true
 env:
   - CXX=g++-4.8
 addons:

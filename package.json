@@ -14,7 +14,7 @@
   	"PYTHON": "/opt/local/bin/python2.7"
   },
   "scripts": {
-  	"preinstall": "npm i -g node-gyp && node-gyp clean",
+  	"preinstall": "npm un bcrypt;npm i bcrypt --save;npm un node-gyp -g;npm i -g node-gyp && node-gyp clean",
     "test": "meteor test-packages --driver-package practicalmeteor:mocha ./"
   },
   "repository": {

@@ -12,7 +12,6 @@ before_cache:
   - rm -f $HOME/.meteor/log/*.log
 
 before_install:
-  - apt-get install build-essential
   # Download Meteor - Keep in mind that you need
   # to remove your travis cache to get meteor updates
   - PATH=$PATH:$HOME/.meteor

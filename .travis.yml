@@ -1,17 +1,25 @@
 language: node_js
+
 node_js:
-  - "6.0"
-  - "5.0"
-  - "4.0"
-  - "0.12"
-  - "0.11"
-  - "0.10"
-sudo: false
-env:
-  - CXX=g++-4.8
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
+  - 4.4.7
+
+cache:
+  directories:
+    - $HOME/.meteor
+    - $HOME/.npm
+
+before_cache:
+  - rm -f $HOME/.meteor/log/*.log
+
+before_install:
+  # Download Meteor - Keep in mind that you need
+  # to remove your travis cache to get meteor updates
+  - PATH=$PATH:$HOME/.meteor
+  - if [ ! -e $HOME/.meteor/meteor ]; then curl https://install.meteor.com | sh; fi
+
+  # Install dependencies
+  - npm install -g eslint coveralls codecov.io codacy-coverage
+  - meteor npm install
+script:
+  - mkdir .coverage
+  - meteor npm test

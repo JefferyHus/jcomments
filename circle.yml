@@ -1,0 +1,15 @@
+machine:
+  node:
+    version: 0.10.43
+dependencies:
+  cache_directories:
+    - "~/.meteor"
+    - "~/.npm"
+  override:
+    - npm -g install npm@latest-2
+    # -- CACHE METEOR --
+    # Restore the meteor symlink
+    - if [ -d ~/.meteor ]; then sudo ln -s ~/.meteor/meteor /usr/local/bin/meteor; fi
+    # Install Meteor (if not restored from cache)
+    - if [ ! -e ~/.meteor/meteor ]; then curl https://install.meteor.com | /bin/sh; fi
+    - npm install

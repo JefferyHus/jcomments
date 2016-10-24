@@ -24,7 +24,7 @@ Package.onUse(function(api) {
     'templating',
     'jquery',
     'check',
-    'less@2.7.5_1',
+    'less@2.5.0_2',
     'tracker',
     'random',
     'reactive-dict',
@@ -39,15 +39,15 @@ Package.onUse(function(api) {
 
   // Package specific globals and files
   api.addFiles([
-    'lib/collections/comments.js',
-    'lib/collections/methods/comments.js'
+    'lib/collections/jcomments.js',
+    'lib/collections/methods/jcomments.js'
   ]);
 
   api.addFiles([
     'lib/exports/media-analyzers/image.js',
-    'lib/exports/media-analyzers/youtube.js',
+    'lib/exports/media-analyzers/link.js',
     'lib/exports/user.js',
-    'lib/exports/time-tick.js',
+    'lib/exports/time.js',
     'lib/exports/media.js',
     'lib/templates/commentsBox/commentsBox.html',
     'lib/api.js'
@@ -63,7 +63,7 @@ Package.onUse(function(api) {
     'lib/exports/hash.js'
   ], 'server');
 
-  api.mainModule('j-comments.js');
+  api.export('JComments');
 });
 
 Package.onTest(function(api) {

@@ -15,7 +15,10 @@ Npm.depends({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('METEOR@1.3.2.2');
+  api.versionsFrom('METEOR@1.4.1');
+
+  api.use('npm-bcrypt@=0.7.8_2');
+
   api.use([
     'ecmascript',
     'accounts-base',
@@ -74,7 +77,7 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('ecmascript');
-  api.use('practicalmeteor:mocha@2.1.0_7');
+
   api.use(['tinytest', 'accounts-password', 'audit-argument-checks', 'check']);
   api.use('ginsama:jcomments');
 

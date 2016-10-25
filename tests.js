@@ -5,14 +5,14 @@
 Meteor.methods({
   'removeGeneratedDocs': function (id) {
     check(id, String);
-    JComments._collection.remove({ userId: id });
+    JComments._collection.remove({ uid: id });
   }
 });
 
 if (Meteor.isClient) {
   Meteor.subscribe('allJComments');
 
-  var id = JComments._collection.insert({ 'referenceId' : 'rawInsertDocId', 'content' : 'oldContent', 'userId' : 'works' });
+  var id = JComments._collection.insert({ 'referenceId' : 'rawInsertDocId', 'content' : 'oldContent', 'uid' : 'works' });
   JComments._collection.update(id, { $set: { 'content' : 'newContent'} });
 
   JComments._collection.remove('shoudldNotBeRemovable');
@@ -24,7 +24,7 @@ if (Meteor.isClient) {
 
 } else if (Meteor.isServer) {
   JComments._collection.remove({});
-  JComments._collection.insert({ 'referenceId' : 'othersDoc', 'userId' : 'someBodyElse', 'content' : 'nice' });
+  JComments._collection.insert({ 'referenceId' : 'othersDoc', 'uid' : 'someBodyElse', 'content' : 'nice' });
 
   Meteor.methods({
     'getDoc' : function (referenceId) {
@@ -64,10 +64,10 @@ if (Meteor.isClient) {
 
     var comments = JComments.get('fakeDoc1').fetch();
     test.equal(comments[0].content, 'I did not like it');
-    test.equal(comments[0].userId, Meteor.userId());
+    test.equal(comments[0].uid, Meteor.userId());
     test.equal(comments[0].referenceId, 'fakeDoc1');
     test.equal(comments[1].content, 'I liked this');
-    test.equal(comments[1].userId, Meteor.userId());
+    test.equal(comments[1].uid, Meteor.userId());
     test.equal(comments[1].referenceId, 'fakeDoc1');
   });
 
@@ -80,7 +80,7 @@ if (Meteor.isClient) {
 
     test.equal(JComments.get('getDoc1').count(), 2);
     test.equal(JComments.get('getDoc2').count(), 1);
-    test.equal(JComments.get('getDoc1').fetch()[0].userId, Meteor.userId());
+    test.equal(JComments.get('getDoc1').fetch()[0].uid, Meteor.userId());
     test.equal(JComments.get('getDoc1').fetch()[0].likes.length, 0);
     test.equal(JComments.get('getDoc1').fetch()[0].referenceId, 'getDoc1');
     test.equal(JComments.get('getDoc1').fetch()[0].content, 'I will like it not');
@@ -126,23 +126,23 @@ if (Meteor.isClient) {
 
     test.equal(JComments.get('othersDoc').count(), 2);
     test.equal(comments[0].content, 'I like this, its my comment');
-    test.equal(comments[0].userId, Meteor.userId());
-    test.equal(comments[1].userId, 'someBodyElse');
+    test.equal(comments[0].uid, Meteor.userId());
+    test.equal(comments[1].uid, 'someBodyElse');
 
     JComments.remove(comments[1]._id);
 
     comments = JComments.get('othersDoc').fetch();
 
     test.equal(JComments.get('othersDoc').count(), 2);
-    test.equal(comments[0].userId, Meteor.userId());
-    test.equal(comments[1].userId, 'someBodyElse');
+    test.equal(comments[0].uid, Meteor.userId());
+    test.equal(comments[1].uid, 'someBodyElse');
 
     JComments.remove(comments[0]._id);
 
     comments = JComments.get('othersDoc').fetch();
 
     test.equal(JComments.get('othersDoc').count(), 1);
-    test.equal(comments[0].userId, 'someBodyElse');
+    test.equal(comments[0].uid, 'someBodyElse');
   });
 
   Tinytest.addAsync('JComments - Raw Collecton Remove', function (test, completed) {
@@ -152,7 +152,7 @@ if (Meteor.isClient) {
     JComments._collection.remove(id);
     Meteor.call('getDoc', 'othersDoc', function (err, doc) {
       test.equal(doc.content, 'nice');
-      test.equal(doc.userId, 'someBodyElse');
+      test.equal(doc.uid, 'someBodyElse');
       completed();
     });
   });

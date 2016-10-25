@@ -15,7 +15,7 @@
   },
   "scripts": {
   	"preinstall": "npm un bcrypt;npm i bcrypt --save;npm un node-gyp -g;npm i -g node-gyp && node-gyp clean",
-    "test": "meteor test-packages --driver-package practicalmeteor:mocha ./"
+    "test": "meteor test-packages --driver-package tinytest ./"
   },
   "repository": {
     "type": "git",

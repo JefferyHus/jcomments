@@ -1,0 +1,22 @@
+<template name="commentsTextarea">
+  {{#if customTextareaTemplate}}
+    {{> customTextareaTemplate}}
+  {{else}}
+  	{{#if templateIs 'material' }}
+		<div class="card-body card-padding">
+			<div class="media-textarea">
+				<form action="" class="form-horizontal ui reply form comment-form">
+					<div class="form-group">
+						<div class="field fg-line">
+							<textarea class="form-control auto-size create-comment" placeholder="Press enter to move to the next line..."></textarea>
+						</div>
+					</div>
+					<button class="btn btn-default btn-icon waves-effect waves-circle waves-float submit pull-right">
+						<i class="zmdi zmdi-arrow-forward"></i>
+	                </button>
+				</form>
+			</div>
+		</div>
+  	{{/if}}
+  {{/if}}
+</template>

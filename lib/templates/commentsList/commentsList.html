@@ -1,0 +1,21 @@
+<template name="commentsList">
+	{{#if Template.subscriptionsReady}}
+		{{#if customListTemplate}}
+			{{> customListTemplate}}
+		{{else}}
+			{{#if templateIs 'material'}}
+		        {{#each comment}}
+		          {{> commentsSingleComment }}
+		        {{/each}}
+
+		        {{#if hasMoreComments}}
+		          <div class="ui fluid green loadmore-action button">{{ take key='load-more' default='Load more comments' }}</div>
+		        {{/if}}
+			{{/if}}
+		{{/if}}
+	{{else}}
+	    {{#if customLoadingTemplate }}
+	      {{> customLoadingTemplate }}
+	    {{/if}}
+	{{/if}}
+</template>

@@ -50,12 +50,18 @@ Package.onUse(function(api) {
     'lib/exports/time.js',
     'lib/exports/media.js',
     'lib/templates/commentsBox/commentsBox.html',
+    'lib/templates/commentsSingleComment/commentsSingleComment.html',
+    'lib/templates/commentsTextarea/commentsTextarea.html',
+    'lib/templates/commentsList/commentsList.html',
     'lib/api.js'
   ]);
 
   api.addFiles([
     'lib/templates/helpers.js',
-    'lib/templates/commentsBox/commentsBox.js'
+    'lib/templates/commentsBox/commentsBox.js',
+    'lib/templates/commentsSingleComment/commentsSingleComment.js',
+    'lib/templates/commentsTextarea/commentsTextarea.js',
+    'lib/templates/commentsList/commentsList.js'
   ], 'client');
 
   api.addFiles([
@@ -68,7 +74,7 @@ Package.onUse(function(api) {
 
 Package.onTest(function(api) {
   api.use('ecmascript');
-  api.use('practicalmeteor:mocha');
+  api.use('practicalmeteor:mocha@2.1.0_7');
   api.use(['tinytest', 'accounts-password', 'audit-argument-checks', 'check']);
   api.use('ginsama:jcomments');
 

@@ -1,0 +1,25 @@
+<template name="commentsSingleComment">
+	<div data-id="{{_id}}" class="media comment {{#if isOwnComment}}own-comment{{/if}}">
+		<div class="pull-left">
+			<a href="javascript:void(0)" class="pull-left">
+				<img class="media-object" src="{{avatarUrl}}" alt="Avatar of {{user.displayName}}" />
+			</a>
+		</div>
+		<div class="media-body">
+			<h4 class="media-heading">{{user.displayName}}</h4>
+			<div class="media-content">
+				{{#if uiConfigGet 'markdown'}}
+					<p class="text-content">{{#markdown}}{{content}}{{/markdown}}</p>
+				{{else}}
+					<p class="text-content">{{{enhancedContent}}}</p>
+				{{/if}}
+				
+				{{#if media.content}}
+					<div class="content-media">
+						{{{mediaContent}}}
+					</div>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</template>

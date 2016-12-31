@@ -1,7 +1,5 @@
 JComments
 ==================
-[![Build Status](https://travis-ci.org/JefferyHus/meteor-jcomments.svg?branch=master)](https://travis-ci.org/JefferyHus/meteor-jcomments)
-
 JComments - Comments package for meteor
 
 Description
